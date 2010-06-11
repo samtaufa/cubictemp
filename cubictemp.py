@@ -18,7 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-import cgi, re, itertools, copy, os.path
+import cgi, re, itertools, copy, os.path, codecs
 
 class TemplateError(Exception):
     """
@@ -291,7 +291,10 @@ class File(Template):
             :nsDict Instantiation namespace dictionary.
         """
         self.name = filename
-        data = open(filename).read()
+        try:
+            data = codecs.open(filename, "r", "utf-8").read()
+        except UnicodeDecodeError:
+            data = codecs.open(filename, "r", "latin-1").read()            
         Template.__init__(self, data, **nsDict)
 
 
@@ -307,7 +310,10 @@ class FileWatcher:
 
     def _reload(self):
         self.last = os.path.getmtime(self.name)
-        data = open(self.name).read()
+        try:
+            data = codecs.open(self.name, "r", "utf-8").read()
+        except UnicodeDecodeError:
+            data = codecs.open(self.name, "r", "latin-1").read()            
         self.template = Template(data, **self.initDict)
 
     def __call__(self, *args, **kwargs):
