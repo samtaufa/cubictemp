@@ -292,9 +292,9 @@ class File(Template):
         """
         self.name = filename
         try:
-            data = codecs.open(filename, "r", "utf-8").read()
+            data = codecs.open(filename, "rb", encoding="utf-8").read()
         except UnicodeDecodeError:
-            data = codecs.open(filename, "r", "latin-1").read()            
+            data = codecs.open(filename, "rb", encoding="latin-1").read()            
         Template.__init__(self, data, **nsDict)
 
 
@@ -311,9 +311,9 @@ class FileWatcher:
     def _reload(self):
         self.last = os.path.getmtime(self.name)
         try:
-            data = codecs.open(self.name, "r", "utf-8").read()
+            data = codecs.open(self.name, "rb", encoding="utf-8").read()
         except UnicodeDecodeError:
-            data = codecs.open(self.name, "r", "latin-1").read()            
+            data = codecs.open(self.name, "rb", encoding="latin-1").read()            
         self.template = Template(data, **self.initDict)
 
     def __call__(self, *args, **kwargs):
