@@ -97,6 +97,8 @@ class u_Expression(libpry.AutoTree):
     def test_render(self):
         e = cubictemp._Expression("foo", "@", 0, self.s, {})
         assert e.render(foo="bar") == "bar"
+        f = cubictemp._Expression("foo", "%", 0, self.s, {})
+        assert f.render(foo="bar") == "bar"
 
     def test_block(self):
         e = cubictemp._Expression("foo", "@", 0, self.s, {})

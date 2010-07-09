@@ -136,6 +136,9 @@ class _Expression(_Eval):
         if self.flavor == "@":
             if not getattr(ret, "_cubictemp_unescaped", 0):
                 return escape(unicode(ret))
+        if self.flavor == "%":
+            if not getattr(ret, "_cubictemp_unescaped", 0):
+                return cgi.urllib.quote(unicode(ret).encode('utf-8'))			
         return unicode(ret)
 
 
@@ -151,7 +154,7 @@ class _Block(list, _Eval):
     def render(self, **ns):
         n = ns.copy()
         n.update(self.ns)
-        r = "".join([i.render(**n) for i in self])
+        r = unicode(u"".join([unicode(i.render(**n)) for i in self]))
         if self.processor:
             n["_cubictemp_processor"] = _Processor()
             proc = self._eval(self._ecache, n)
@@ -206,7 +209,7 @@ class Template:
         # The end of a tag
         (?P<end>^[ \t]*(<!--)?\(\s*end\s*\)-->[ \t\r\f\v]*\n) |
         # An expression
-        ((?P<flavor>@|\$)!(?P<expr>.+?)!(?P=flavor))
+        ((?P<flavor>@|\$|%)!(?P<expr>.+?)!(?P=flavor))
     """
     _reParts = re.compile(_bStart, re.X|re.M)
     # Name by which this template is referred to in exceptions.
