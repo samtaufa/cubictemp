@@ -7,7 +7,7 @@ transformation on it when it is inserted back into the document. One way to do
 this is to write a transformation function that takes a string and returns a
 string, and pass it straight in the template namespace for use: 
 
-<!--(block|cubescript|htmlSyntax)-->
+<!--(block|cubescript|syntax("html"))-->
 <!--(_block codesnippet)-->
     for i in range(10):
         print i
@@ -17,7 +17,7 @@ string, and pass it straight in the template namespace for use:
 
 Cubictemp has a special __processor__ syntax to facilitate this use pattern.
 
-<!--(block|cubescript|htmlSyntax)-->
+<!--(block|cubescript|syntax("html"))-->
 <!--(_block codesnippet|syntaxHighlight)-->
     for i in range(10):
         print i
@@ -29,7 +29,7 @@ Using processors is similar to using pipes in Unix shells. Any callable that
 takes a string and returns a string can be used as a processor. Processors can
 be chained together:
 
-<!--(block|cubescript|htmlSyntax)-->
+<!--(block|cubescript|syntax("html"))-->
 <!--(_block codesnippet|trimWhitespace|syntaxHighlight)-->
     for i in range(10):
         print i
@@ -52,7 +52,7 @@ into the template. Anonymous blocks remove this redundancy. An anonymous block
 is immediately inserted into the template at its place of definition. The
 following template is equivalent to the last definition above:
 
-<!--(block|cubescript|htmlSyntax)-->
+<!--(block|cubescript|syntax("html"))-->
 <!--(_block|trimWhitespace|syntaxHighlight)-->
     for i in range(10):
         print i

@@ -1,11 +1,9 @@
 import os, os.path, subprocess
-import countershape.widgets
-import countershape.layout
-import countershape.grok
+import countershape
+from countershape import widgets, layout, markup, PythonModule
 from countershape.doc import *
 
-this.layout = countershape.layout.Layout("_layout.html")
-this.markdown = "rst"
+this.markup = markup.Markdown(extras=["code-friendly"])
 
 ns.docTitle = "Cubictemp Manual"
 ns.docMaintainer = "Aldo Cortesi"
@@ -14,18 +12,17 @@ ns.copyright = "Copyright Nullcube 2008"
 ns.head = countershape.template.File(None, "_header.html")
 ns.sidebar = countershape.widgets.SiblingPageIndex(
                 '/index.html',
-                exclude=['countershape']
+                exclude=['setup.py']
             )
-
 this.titlePrefix = "Cubictemp Manual - "
-
-ns.ctgrok = countershape.grok.parse("../cubictemp.py")
+this.layout = countershape.layout.Layout("_layout.html")
 
 pages = [
     Page("index.html", "Introduction"),
-    Page("subs.html", "Tags"),
     Page("blocks.html", "Blocks"),
     Page("processors.html", "Processors"),
-    Page("api.html", "API"),
+    PythonPage("../cubictemp.py", 
+        title="Source"),
+    Page("subs.html","Tags, Expressions"),
     Page("admin.html", "Administrivia")
 ]

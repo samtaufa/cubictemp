@@ -12,7 +12,7 @@ rendered template. There are two flavours of delimiters - __escaped__:
 <!--(end)-->
 </pre>
 
-and __unescaped__:
+and **unescaped**:
 
 <pre class="output">
 <!--(block|cubescript)-->
@@ -29,7 +29,7 @@ include things like <b>while</b>, <b>print</b>, variable assignment and full
 tags. 
 
 
-::: Example
+Example
 -----------
 
 Template:
@@ -45,7 +45,7 @@ key is @_!mydict["key"]!@
 
 Code:
 
-<!--(block|pySyntax)-->
+<!--(block|syntax("py"))-->
 import cubictemp
 print cubictemp.File(
             "template",
@@ -74,10 +74,10 @@ place HTML in a substitution tag, make sure you carefully evaluate the
 application context to make sure that users cannot inject malicious data.
 
 
-::: Example
+Example
 -----------
 
-<!--(block|cubescript|pySyntax)-->
+<!--(block|cubescript|syntax("py"))-->
 import cubictemp
 print cubictemp.Template(
         "@_!x!@ $_!x!$",
@@ -87,7 +87,7 @@ print cubictemp.Template(
 
 ... will print:
 
-<!--(block|htmlSyntax)-->
+<!--(block|syntax("html"))-->
 <H1>foo</H1> &lt;H1&gt;foo&lt;/H1&gt;
 <!--(end)-->
 

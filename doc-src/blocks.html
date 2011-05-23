@@ -6,7 +6,7 @@ Cubictemp blocks are chunks of text that are defined in the template body, and
 can be referenced in various ways.  The simplest block variety is the _named
 block_:
 
-<!--(block|cubescript|htmlSyntax)-->
+<!--(block|cubescript|syntax("html"))-->
 <!--(_block bar)-->
     The time has come the walrus said
 <!--(_end)-->
@@ -33,7 +33,7 @@ block definition itself does not appear in the template output.
 Named blocks are callable objects that accept an over-riding namespace
 argument:
 
-<!--(block|cubescript|htmlSyntax)-->
+<!--(block|cubescript|syntax("html"))-->
 <!--(_block bar)-->
     The time has come the @_!foo!@ said...
 <!--(_end)-->
@@ -66,7 +66,7 @@ escaped substitution syntax.
 
 <p>Cubictemp provides a repeat construct to allow traversal of iterables:</p>
 
-<!--(block|cubescript|htmlSyntax)-->
+<!--(block|cubescript|syntax("html"))-->
 <!--(_for foo in bar)-->
     @_!foo!@
 <!--(_end)-->
@@ -76,7 +76,7 @@ Like a Python __for__ loop, the template above loops through all elements of
 "bar", setting the value of "foo" to each element in turn. As in simple
 substitutions, any valid expression can be used as the sequence definition:
 
-<!--(block|cubescript|htmlSyntax)-->
+<!--(block|cubescript|syntax("html"))-->
 <!--(_for foo in range(3))-->
     Counting: @_!foo!@
 <!--(_end)-->
@@ -101,7 +101,7 @@ document is viewed as HTML. It is often convenient to be able to also comment
 everything inside the block. This is accomplished using the __open__ tag
 variation:
 
-<!--(block|cubescript|htmlSyntax)-->
+<!--(block|cubescript|syntax("html"))-->
 <!--(_block foo)
     The time has come the walrus said...
 (_end)-->
