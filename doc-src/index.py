@@ -18,11 +18,16 @@ this.titlePrefix = "Cubictemp Manual - "
 this.layout = countershape.layout.Layout("_layout.html")
 
 pages = [
-    Page("index.html", "Introduction"),
-    Page("blocks.html", "Blocks"),
-    Page("processors.html", "Processors"),
+    Page("index.mdtext", "Overview"),
+    Page("introduction.mdtext", "Introduction"),    
+    Page("templates.mdtext", "Templates"),    
+    Page("extensions.mdtext", "Extensions"),    
+    Page("tipstricks.mdtext", "Tips & Tricks"),    
+    
+    Page("blocks.mdtext", "Blocks"),
+    Page("processors.mdtext", "Processors"),
     PythonPage("../cubictemp.py", 
         title="Source"),
-    Page("subs.html","Tags, Expressions"),
-    Page("admin.html", "Administrivia")
+    Page("subs.mdtext","Tags, Expressions"),
+    Page("admin.mdtext", "Administrivia")
 ]
