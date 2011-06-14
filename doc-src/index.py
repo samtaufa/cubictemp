@@ -1,6 +1,6 @@
 import os, os.path, subprocess
 import countershape
-from countershape import widgets, layout, markup, PythonModule
+from countershape import widgets, layout, markup
 from countershape.doc import *
 
 this.markup = markup.Markdown(extras=["code-friendly"])
