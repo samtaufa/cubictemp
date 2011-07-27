@@ -3,7 +3,7 @@ import countershape
 from countershape import widgets, layout, markup
 from countershape.doc import *
 
-this.markup = markup.Markdown(extras=["code-friendly"])
+this.markup = markup.Markdown( extras=["code-friendly"] )
 
 ns.docTitle = "Cubictemp Manual"
 ns.docMaintainer = "Aldo Cortesi"
